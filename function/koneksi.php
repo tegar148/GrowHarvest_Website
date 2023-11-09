@@ -14,26 +14,21 @@
 
 
 
-    function ubahakun($data){
+    function ubahkategori($data){
 		global $con;
 
-		$id = $data["id"];
+		$id = $data["id_kategori"];
 
 		$nama = htmlspecialchars($data["namaedit"]);
-        $pengguna = htmlspecialchars($data["useredit"]);
-        $password = htmlspecialchars($data["passwordedit"]);
-		$alamat = htmlspecialchars($data["alamatedit"]);
-        $upload = htmlspecialchars($data["upload"]);
+        // $pengguna = htmlspecialchars($data["useredit"]);
+        // $password = htmlspecialchars($data["passwordedit"]);
+		// $alamat = htmlspecialchars($data["alamatedit"]);
+        // $upload = htmlspecialchars($data["upload"]);
 
 		
-		$query = "UPDATE admin SET 
-				nama_pengguna = '$pengguna',
-			    kata_sandi_hash = '$password',
-				nama_lengkap = '$nama',
-                alamat  =   '$alamat',
-				gambar = '$upload'
-				WHERE id_admin = $id
-				";
+		$query = "UPDATE `kategoriproduk` SET
+		 `nama_kategori` = '$nama' 
+		 WHERE `kategoriproduk`.`id_kategori` = '$id'";
 
 		mysqli_query($con, $query);
 
@@ -69,5 +64,34 @@
 	
 		return mysqli_affected_rows($con);
 	}
+	
+
+
+
+	// function ubahkategori($data){
+	// 	global $con;
+	
+	// 	$id = $data["id_kategori"];
+	
+	// 	// Memeriksa apakah ID ada dalam database
+	// 	$query_check_id = "SELECT id_kategori FROM kategoriproduk WHERE id_kategori = $id";
+	// 	$result = mysqli_query($con, $query_check_id);
+	
+	// 	if(mysqli_num_rows($result) == 0) {
+	// 		// ID tidak ditemukan dalam database, lakukan tindakan yang sesuai
+	// 		return "ID tidak valid";
+	// 	}
+	
+	// 	$nama = htmlspecialchars($data["namaedit"]);
+	
+	// 	$query = "UPDATE kategoriproduk SET 
+	// 				nama_kategori = '$nama'
+	// 				WHERE id_kategori = $id
+	// 				";
+	
+	// 	mysqli_query($con, $query);
+	
+	// 	return mysqli_affected_rows($con);
+	// }
 	
 ?>

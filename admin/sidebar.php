@@ -41,7 +41,7 @@
               </a>
             </li>
             <li class="menu-item">
-              <a href="index.php" class="menu-link">
+              <a href="../produk/indexProduk.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-package"></i>
                 <div data-i18n="Analytics">Produk</div>
               </a>

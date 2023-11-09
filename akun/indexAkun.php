@@ -95,7 +95,7 @@
                                           ></button>
                                         </div>
                                         <hr class="my-0" />
-                                        <form id="formAccountDeactivation" action="edit.php" method="POST" enctype="multipart/form-data">
+                                        <form id="formAccountDeactivation" action="" method="POST" enctype="multipart/form-data">
                                         <div class="card-body">
                                           
                                           <div class="d-flex align-items-start align-items-sm-center gap-4">

@@ -9,7 +9,6 @@
 ?>
 
 
-
 <?php 
     $content = ob_get_clean();
     include "../admin/body.php";

@@ -6,6 +6,25 @@
   $query= " SELECT * FROM kategoriproduk ORDER BY id_kategori ASC ";
   $sql= mysqli_query($con,$query);
   $no = 0;
+
+
+	if( isset($_POST["submit"]) ) {
+
+		if (ubahkategori ($_POST) > 0 ) {
+			echo "
+			<script>
+					window.location='indexKategori.php';
+			</script>
+			";
+		}else {
+			echo "
+				<script>
+					alert('data gagal ditambahkan');
+					window.location='indexKategori.php';
+				</script>
+			";
+		}		
+	}
 ?>
 
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Fitur /</span> Kategori</h4>
@@ -48,7 +67,7 @@
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
+                              <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editmodalkategori<?= $datakategori["id_kategori"];?>"
                                 ><i class="bx bx-edit-alt me-1"></i> Edit</a
                               >
                               <a class="dropdown-item" href="delete.php?id=<?php echo $datakategori['id_kategori']; ?>"
@@ -58,6 +77,39 @@
                           </div>
                         </td>
                       </tr>
+
+                      <div class="modal fade" id="editmodalkategori<?= $datakategori["id_kategori"];?>" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-sm" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel2">Edit kategori</h5>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <form id="formeditkategori" action="" method="POST" enctype="multipart/form-data">
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="col mb-3">
+                                  <label for="namaedit" class="form-label">Nama</label>
+                                  <input type="text" id="namaedit" name="namaedit" class="form-control" value="<?= $datakategori["nama_kategori"];?>" />
+                                </div>
+                              </div>
+                              <input type="text" hidden name="id_kategori" value="<?= $datakategori["id_kategori"];?>">
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Close
+                              </button>
+                              <button type="submit" name="submit" class="btn btn-primary" >Save changes</button>
+                            </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
                       <?php endforeach ?>
                     </tbody>
                   </table>
